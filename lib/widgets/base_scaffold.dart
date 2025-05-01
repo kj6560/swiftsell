@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'custom_drawer.dart';
 
 class BaseScaffold extends StatelessWidget {
   final String title;
   final Widget body;
+  final String userName;
+  final String email;
+  final String profileImageUrl;
 
   const BaseScaffold({
     super.key,
     required this.title,
     required this.body,
+    required this.userName,
+    required this.email,
+    required this.profileImageUrl,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white), // <-- makes drawer icon white
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -25,11 +32,15 @@ class BaseScaffold extends StatelessWidget {
             ),
           ),
         ),
-        title: Text(title,style: TextStyle(color:Colors.white),),
+        title: Text(title, style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      drawer: const CustomDrawer( userName: 'Keshav jha', email: 'kj6560@gmail.com', profileImageUrl: '',),
+      drawer: CustomDrawer(
+        userName: userName,
+        email: email,
+        profileImageUrl: profileImageUrl,
+      ),
       body: body,
     );
   }
