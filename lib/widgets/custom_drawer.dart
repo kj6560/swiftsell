@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String userName;
@@ -42,17 +41,56 @@ class CustomDrawer extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.home),
                   title: const Text('Home'),
-                  onTap: () => Get.offAllNamed('/home'),
+                  onTap: () {
+                    Navigator.pop(context); // Close the drawer
+                    Get.offAllNamed('/home');
+                  },
                 ),
                 ListTile(
                   leading: const Icon(Icons.settings),
-                  title: const Text('Settings'),
-                  onTap: () => Get.toNamed('/settings'),
+                  title: const Text('Products'),
+                  onTap: () {
+                    Navigator.pop(context); // Close the drawer
+                    Get.toNamed('/products');
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Inventory'),
+                  onTap: () {
+                    Navigator.pop(context); // Close the drawer
+                    Get.toNamed('/inventory');
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Orders'),
+                  onTap: () {
+                    Navigator.pop(context); // Close the drawer
+                    Get.toNamed('/orders');
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Customers'),
+                  onTap: () {
+                    Navigator.pop(context); // Close the drawer
+                    Get.toNamed('/customers');
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Schemes'),
+                  onTap: () {
+                    Navigator.pop(context); // Close the drawer
+                    Get.toNamed('/schemes');
+                  },
                 ),
                 ListTile(
                   leading: const Icon(Icons.logout),
                   title: const Text('Logout'),
                   onTap: () {
+                    Navigator.pop(context); // Close the drawer
                     // Clear user data, token, etc.
                     Get.offAllNamed('/login');
                   },
