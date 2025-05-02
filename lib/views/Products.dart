@@ -13,7 +13,7 @@ class Products extends StatelessWidget {
       Get.put(ProductController());
     }
     return BaseScaffold(
-      title: "Home",
+      title: "Products",
       body: ProductHomeContent(),
     );
   }

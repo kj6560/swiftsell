@@ -7,7 +7,7 @@ class HomeContent extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Obx(()=>Padding(
       padding: const EdgeInsets.all(16.0),
       child: ListView(
         children: [
@@ -34,23 +34,55 @@ class HomeContent extends GetView<HomeController> {
           ),
           const SizedBox(height: 20),
           _buildKpiCard(
-            title: "Inventory Total",
+            title: "Inventory Today",
             value:
-                '${controller.homeKpi.value.inventoryData.inventoryAddedTotal}',
+            '${controller.homeKpi.value.inventoryData.inventoryAddedToday}',
             icon: Icons.inventory,
             color: Colors.teal.shade400,
           ),
           const SizedBox(height: 20),
           _buildKpiCard(
+            title: "Inventory This Month",
+            value:
+            '${controller.homeKpi.value.inventoryData.inventoryAddedThisMonth}',
+            icon: Icons.inventory,
+            color: Colors.teal.shade400,
+          ),
+          const SizedBox(height: 20),
+          _buildKpiCard(
+            title: "Inventory Total",
+            value:
+            '${controller.homeKpi.value.inventoryData.inventoryAddedTotal}',
+            icon: Icons.inventory,
+            color: Colors.teal.shade400,
+          ),
+          const SizedBox(height: 20),
+          _buildKpiCard(
+            title: "Products Today",
+            value:
+            '${controller.homeKpi.value.productsData.productsAddedToday}',
+            icon: Icons.shopping_cart,
+            color: Colors.orange.shade400,
+          ),
+          const SizedBox(height: 20),
+          _buildKpiCard(
+            title: "Products This Month",
+            value:
+            '${controller.homeKpi.value.productsData.productsAddedThisMonth}',
+            icon: Icons.shopping_cart,
+            color: Colors.orange.shade400,
+          ),
+          const SizedBox(height: 20),
+          _buildKpiCard(
             title: "Products Total",
             value:
-                '${controller.homeKpi.value.productsData.productsAddedTotal}',
+            '${controller.homeKpi.value.productsData.productsAddedTotal}',
             icon: Icons.shopping_cart,
             color: Colors.orange.shade400,
           ),
         ],
       ),
-    );
+    ));
   }
 
   Widget _buildKpiCard({
