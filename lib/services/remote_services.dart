@@ -1,13 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:swiftsell/models/home_kpi.dart';
 import '../constants/base_url.dart';
 
+import '../constants/endpoints.dart';
 import '../utility/get_token.dart';
 import '../utility/my_validator.dart';
 
@@ -27,7 +25,7 @@ class RemoteServices {
     bool isEmail = MyValidator.isValidEmail(emailOrPhone);
     // Encode parameters into the URL
     final uri = Uri.parse(
-      '${baseUrl}/api/login',
+      '$baseUrl/api/login',
     ).replace(queryParameters: {'email': emailOrPhone, 'password': password});
 
     final response = await http.get(
@@ -46,6 +44,23 @@ class RemoteServices {
         'error': true,
         'message': errorResponse['message'] ?? 'Failed to login',
       };
+    }
+  }
+  static Future<HomeKpi?> fetchHomeKpis() async {
+    var token = getToken();
+    String urL = EndPoints.fetchHomeKpis;
+    print(Uri.parse(urL));
+    var response = await http.get(Uri.parse(urL), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    });
+    print(response.body);
+    if (response.statusCode == 200) {
+      var jsonString = response.body;
+      return homeKpiFromJson(jsonEncode(jsonDecode(jsonString)['data']));
+    } else {
+      return null;
     }
   }
 }

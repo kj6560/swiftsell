@@ -20,7 +20,7 @@ class LoginController extends GetxController{
   RxString version = "".obs;
   RxInt platform = 1.obs;
   Map<String, dynamic>? _userData;
-  RxBool _checking = true.obs;
+  final RxBool _checking = true.obs;
   Map<String, dynamic>? userData;
   @override
   void onInit() {

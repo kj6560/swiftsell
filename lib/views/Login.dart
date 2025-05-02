@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:swiftsell/controllers/LoginController.dart';
 class Login extends GetView<LoginController> {
 
-  Login({super.key});
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {

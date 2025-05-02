@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'custom_drawer.dart';
 
 class BaseScaffold extends StatelessWidget {
   final String title;
   final Widget body;
-  final String userName;
-  final String email;
-  final String profileImageUrl;
 
   const BaseScaffold({
     super.key,
     required this.title,
     required this.body,
-    required this.userName,
-    required this.email,
-    required this.profileImageUrl,
   });
 
   @override
@@ -36,11 +29,7 @@ class BaseScaffold extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      drawer: CustomDrawer(
-        userName: userName,
-        email: email,
-        profileImageUrl: profileImageUrl,
-      ),
+      drawer: CustomDrawer(),
       body: body,
     );
   }

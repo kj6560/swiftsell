@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:swiftsell/utility/data_storage.dart';
 import 'package:swiftsell/utility/showLoading.dart';
@@ -37,28 +38,8 @@ void main() async {
         return StreamBuilder(
             stream: Connectivity().onConnectivityChanged,
             builder: (context, snapshot) {
-              ConnectivityResult? result = snapshot.data?.first;
               return Column(
                 children: [
-                  Visibility(
-                    visible: result != ConnectivityResult.mobile &&
-                        result != ConnectivityResult.wifi,
-                    child: Material(
-                      child: SafeArea(
-                        child: Container(
-                          color: Colors.red,
-                          height: 30,
-                          child: Center(
-                            child: Text(
-                              "No Internet Connection",
-                              style:
-                              TextStyle(color: Colors.white, fontSize: 16),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                   Expanded(child: child!),
                 ],
               );
@@ -93,11 +74,11 @@ class _MySudoHomeState extends State<MySudoHome> with TickerProviderStateMixin {
     String? loggedout = DataStorage.retrieve("loggedout");
     if (packageInfo.version != '1.0.0' &&
         (loggedout == '' || loggedout == null)) {
+      print("logging out");
       logout();
     }
-    var _token = DataStorage.retrieve("token");
-    print(_token);
-    if (_token != null && _token.isNotEmpty) {
+    var token = DataStorage.retrieve("token");
+    if (token != null && token.isNotEmpty) {
       Get.offAllNamed("/home");
     } else {
       Get.offAllNamed("/login");

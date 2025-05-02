@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:swiftsell/controllers/MyDrawerController.dart';
 
-class CustomDrawer extends StatelessWidget {
-  final String userName;
-  final String email;
-  final String profileImageUrl;
-
+class CustomDrawer extends GetView<MyDrawerController> {
   const CustomDrawer({
     super.key,
-    required this.userName,
-    required this.email,
-    required this.profileImageUrl,
   });
 
   @override
   Widget build(BuildContext context) {
+    Get.put(MyDrawerController());
     return Drawer(
       child: Column(
         children: [
           // Drawer header with gradient background
           UserAccountsDrawerHeader(
-            accountName: Text(userName),
-            accountEmail: Text(email),
+            accountName: Text(controller.user_name.value),
+            accountEmail: Text(controller.email.value),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(profileImageUrl),
+              backgroundImage: NetworkImage(controller.profilePicImage.value),
             ),
             decoration: BoxDecoration(
               gradient: LinearGradient(

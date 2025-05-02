@@ -11,12 +11,12 @@ import 'base_url.dart';
 class AppConstants {
   static const String appName = "UNIV";
 
-  static const Color primaryColor = const Color.fromRGBO(26, 188, 156, 70);
+  static const Color primaryColor = Color.fromRGBO(26, 188, 156, 70);
   static const Color esportsBackgroundColor =
-  const Color.fromRGBO(28, 33, 32, 40);
+  Color.fromRGBO(28, 33, 32, 40);
   static const Color sportsBackgroundColor =
-  const Color.fromRGBO(239, 245, 241, 40);
-  static const Color disabledColor = const Color.fromRGBO(19, 146, 127, 0.3);
+  Color.fromRGBO(239, 245, 241, 40);
+  static const Color disabledColor = Color.fromRGBO(19, 146, 127, 0.3);
   static const String passwordPolicy = """
 1. the password contains at least one uppercase letter (A-Z).
 2. the password contains at least one lowercase letter (a-z).
@@ -60,8 +60,7 @@ Decathlon
 
   static Future<List<dynamic>> fetchData(String url) async {
     var token = getToken();
-    ;
-    String urL = '${baseUrl}$url';
+    String urL = '$baseUrl$url';
     final response = await get(Uri.parse(urL), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
