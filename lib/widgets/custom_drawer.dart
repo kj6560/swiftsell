@@ -11,6 +11,9 @@ class CustomDrawer extends GetView<MyDrawerController> {
   @override
   Widget build(BuildContext context) {
     Get.put(MyDrawerController());
+    if (!Get.isRegistered<MyDrawerController>()) {
+      Get.lazyPut(()=>MyDrawerController());
+    }
     return Drawer(
       child: Column(
         children: [

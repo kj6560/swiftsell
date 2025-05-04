@@ -4,18 +4,20 @@ import 'custom_drawer.dart';
 class BaseScaffold extends StatelessWidget {
   final String title;
   final Widget body;
+  final Widget? floatingActionButton; // Optional FAB
 
   const BaseScaffold({
     super.key,
     required this.title,
     required this.body,
+    this.floatingActionButton,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white), // <-- makes drawer icon white
+        iconTheme: const IconThemeData(color: Colors.white),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -31,6 +33,7 @@ class BaseScaffold extends StatelessWidget {
       ),
       drawer: CustomDrawer(),
       body: body,
+      floatingActionButton: floatingActionButton, // FAB here
     );
   }
 }

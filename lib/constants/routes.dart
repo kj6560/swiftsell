@@ -4,9 +4,12 @@ import 'package:swiftsell/views/Customers.dart';
 import 'package:swiftsell/views/Home.dart';
 import 'package:swiftsell/views/Inventory.dart';
 import 'package:swiftsell/views/Login.dart';
+import 'package:swiftsell/views/NewProduct.dart';
 import 'package:swiftsell/views/Orders.dart';
 import 'package:swiftsell/views/Products.dart';
 import 'package:swiftsell/views/Schemes.dart';
+
+import '../views/ProductDetails.dart';
 
 class AppRoutes {
   static const transition = Transition.rightToLeft;
@@ -26,6 +29,16 @@ class AppRoutes {
     GetPage(
       name: '/products',
       page: () => Products(),
+      transition: transition,
+    ),
+    GetPage(
+      name: '/product_details',
+      page: () => ProductDetails(),
+      transition: transition,
+    ),
+    GetPage(
+      name: '/new_product',
+      page: () => NewProduct(),
       transition: transition,
     ),
     GetPage(

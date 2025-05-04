@@ -7,82 +7,88 @@ class HomeContent extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(()=>Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: ListView(
-        children: [
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Sales Total",
-            value: '${controller.homeKpi.value.salesData.salesTotal}',
-            icon: Icons.attach_money,
-            color: Colors.green.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Sales Today",
-            value: controller.homeKpi.value.salesData.salesToday,
-            icon: Icons.calendar_today,
-            color: Colors.blue.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Sales This Month",
-            value: controller.homeKpi.value.salesData.salesThisMonth,
-            icon: Icons.date_range,
-            color: Colors.purple.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Inventory Today",
-            value:
-            '${controller.homeKpi.value.inventoryData.inventoryAddedToday}',
-            icon: Icons.inventory,
-            color: Colors.teal.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Inventory This Month",
-            value:
-            '${controller.homeKpi.value.inventoryData.inventoryAddedThisMonth}',
-            icon: Icons.inventory,
-            color: Colors.teal.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Inventory Total",
-            value:
-            '${controller.homeKpi.value.inventoryData.inventoryAddedTotal}',
-            icon: Icons.inventory,
-            color: Colors.teal.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Products Today",
-            value:
-            '${controller.homeKpi.value.productsData.productsAddedToday}',
-            icon: Icons.shopping_cart,
-            color: Colors.orange.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Products This Month",
-            value:
-            '${controller.homeKpi.value.productsData.productsAddedThisMonth}',
-            icon: Icons.shopping_cart,
-            color: Colors.orange.shade400,
-          ),
-          const SizedBox(height: 20),
-          _buildKpiCard(
-            title: "Products Total",
-            value:
-            '${controller.homeKpi.value.productsData.productsAddedTotal}',
-            icon: Icons.shopping_cart,
-            color: Colors.orange.shade400,
-          ),
-        ],
-      ),
-    ));
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
+      }
+
+      return Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Sales Total",
+              value: '${controller.homeKpi.value.salesData.salesTotal}',
+              icon: Icons.attach_money,
+              color: Colors.green.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Sales Today",
+              value: controller.homeKpi.value.salesData.salesToday,
+              icon: Icons.calendar_today,
+              color: Colors.green.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Sales This Month",
+              value: controller.homeKpi.value.salesData.salesThisMonth,
+              icon: Icons.date_range,
+              color: Colors.green.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Inventory Today",
+              value:
+              '${controller.homeKpi.value.inventoryData.inventoryAddedToday}',
+              icon: Icons.inventory,
+              color: Colors.teal.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Inventory This Month",
+              value:
+              '${controller.homeKpi.value.inventoryData.inventoryAddedThisMonth}',
+              icon: Icons.inventory,
+              color: Colors.teal.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Inventory Total",
+              value:
+              '${controller.homeKpi.value.inventoryData.inventoryAddedTotal}',
+              icon: Icons.inventory,
+              color: Colors.teal.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Products Today",
+              value:
+              '${controller.homeKpi.value.productsData.productsAddedToday}',
+              icon: Icons.shopping_cart,
+              color: Colors.orange.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Products This Month",
+              value:
+              '${controller.homeKpi.value.productsData.productsAddedThisMonth}',
+              icon: Icons.shopping_cart,
+              color: Colors.orange.shade400,
+            ),
+            const SizedBox(height: 20),
+            _buildKpiCard(
+              title: "Products Total",
+              value:
+              '${controller.homeKpi.value.productsData.productsAddedTotal}',
+              icon: Icons.shopping_cart,
+              color: Colors.orange.shade400,
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _buildKpiCard({

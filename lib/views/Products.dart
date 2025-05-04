@@ -4,6 +4,7 @@ import 'package:swiftsell/controllers/ProductController.dart';
 import 'package:swiftsell/viewContents/ProductHomeContent.dart';
 
 import '../widgets/base_scaffold.dart';
+
 class Products extends StatelessWidget {
   const Products({super.key});
 
@@ -15,6 +16,12 @@ class Products extends StatelessWidget {
     return BaseScaffold(
       title: "Products",
       body: ProductHomeContent(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed("/new_product");
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

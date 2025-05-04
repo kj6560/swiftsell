@@ -10,12 +10,15 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Register controller if not already registered
     if (!Get.isRegistered<HomeController>()) {
-      Get.put(HomeController());
+      Get.put(HomeController()); // You can also use Get.lazyPut() here
     }
+
     return BaseScaffold(
       title: "Home",
       body: HomeContent(),
     );
   }
 }
+
